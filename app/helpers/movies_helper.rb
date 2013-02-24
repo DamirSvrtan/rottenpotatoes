@@ -5,8 +5,8 @@ module MoviesHelper
   end
 
   def sortable(column)   
-   return link_to "Movie title", {:sort => column}, {:class => 'title_header'} if column == 'title'
-   return link_to column.titleize, {:sort => column} , {:class => 'release_date_header'}
+   return link_to "Movie title", {:sort => column, :ratings => params[:ratings]}, {:class => 'title_header'} if column == 'title'
+   return link_to column.titleize, {:sort => column, :ratings => params[:ratings]} , {:class => 'release_date_header'}
   end
  
   def hilite(nesto)
@@ -15,5 +15,9 @@ module MoviesHelper
 	else
 	return 'ne-hilite'
 	end
+  end
+
+  def checked?(name)
+	@lista.include?(name)
   end
 end
